@@ -1,0 +1,27 @@
+{
+    "name": "lyramaker/meucms",
+    "version": "0.0.1",
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "doctrine/orm": "^3.6",
+        "lyrathor/router": "^1.0",
+        "latte/latte": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lyramaker\\Meucms\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/LyraMaker/router"
+        }
+    ],
+    "authors": [
+        {
+            "name": "LyraMaker",
+            "email": "gabriel.lyrat@gmail.com"
+        }
+    ]
+}
