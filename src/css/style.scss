@@ -1,2 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+$font-family-sans-serif: "Funnel Sans", sans-serif;
+$font-family-base: $font-family-sans-serif;
+
 @import "bootstrap";
 
+#login-background {
+    background: #001e2b;
+    background-image: linear-gradient(to right bottom, #0e0147, #0b094d, #091054, #07175a, #041d60, #021d5d, #011e5b, #001e58, #00194d, #001441, #000e36, #00052c);
+}
+
+#login-card {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.88);
+}
+
+#login-aside {
+    position: relative;
+    background-image: url("../../public/img/login-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: hsl(0deg 0% 60.85% / 13%);
+        backdrop-filter: blur(0.8px);
+        -webkit-backdrop-filter: blur(5px);
+        z-index: -1;
+    }
+}
+
+.min-dvh-25 {
+    min-height: 25dvh;
+}
+
+.min-dvh-50 {
+    min-height: 50dvh;
+}
+
+.min-dvh-75 {
+    min-height: 75dvh;
+}
+
+.min-dvh-100 {
+    min-height: 100dvh;
+}
+
+.min-dvh-auto {
+    min-height: auto;
+}
+
+@supports not (height: 100dvh) {
+    .min-dvh-25 {
+        min-height: 25vh;
+    }
+
+    .min-dvh-50 {
+        min-height: 50vh;
+    }
+
+    .min-dvh-75 {
+        min-height: 75vh;
+    }
+
+    .min-dvh-100 {
+        min-height: 100vh;
+    }
+}

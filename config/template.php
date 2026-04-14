@@ -4,11 +4,13 @@ $latte = new Latte\Engine;
 
 $latte->setCacheDirectory(__DIR__ . "/../temp");
 
-// Enable auto-refresh for development mode. It recompiles templates on every request.
-$latte->setautoRefresh();
+$latte->setAutoRefresh(true);
 
-function view(string $view, string $path = "../resource/view/")
+function view(string $view, array $params = [], string $path = __DIR__ . "/../resource/view/")
 {
     global $latte;
-    $latte->render($path . "/$view.latte");
+    
+    $filePath = rtrim($path, '/') . '/' . ltrim($view, '/') . '.latte';
+    
+    $latte->render($filePath, $params);
 }
