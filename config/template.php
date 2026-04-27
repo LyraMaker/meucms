@@ -1,16 +1,31 @@
 <?php
 
-$latte = new Latte\Engine;
+use Lyramaker\Meucms\extensions\Latte\MethodExtension;
 
-$latte->setCacheDirectory(__DIR__ . "/../temp");
+use Latte\Engine;
+use Lyramaker\Meucms\extensions\Latte\CsfrExtension;
 
-$latte->setAutoRefresh(true);
+function latte(): Engine
+{
+    static $latte = null;
+
+    if ($latte === null) {
+        $latte = new Engine;
+
+        $latte->setCacheDirectory(__DIR__ . "/../temp");
+        $latte->setAutoRefresh(true);
+    }
+    
+    return $latte;
+}
+
 
 function view(string $view, array $params = [], string $path = __DIR__ . "/../resource/view/")
 {
-    global $latte;
-    
-    $filePath = rtrim($path, '/') . '/' . ltrim($view, '/') . '.latte';
-    
-    $latte->render($filePath, $params);
+    $filePath = rtrim($path, DIRECTORY_SEPARATOR)
+        . DIRECTORY_SEPARATOR
+        . ltrim($view, DIRECTORY_SEPARATOR)
+        . '.latte';
+
+    latte()->render($filePath, $params);
 }
