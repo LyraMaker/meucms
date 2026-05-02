@@ -4,6 +4,7 @@ use Lyramaker\Meucms\extensions\Latte\MethodExtension;
 
 use Latte\Engine;
 use Lyramaker\Meucms\extensions\Latte\CsfrExtension;
+use Lyramaker\Meucms\Latte\Extension\ExtensionMethod;
 
 function latte(): Engine
 {
@@ -15,6 +16,8 @@ function latte(): Engine
         $latte->setCacheDirectory(__DIR__ . "/../temp");
         $latte->setAutoRefresh(true);
     }
+
+    $latte->addExtension(new ExtensionMethod);
     
     return $latte;
 }
